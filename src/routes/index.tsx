@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Heart, ShieldCheck, Moon, BookOpen, Siren } from "lucide-react";
-import hero from "@/assets/hero-mother.jpg";
+import motherBabyLogo from "@/assets/mother-baby-logo.svg";
 import { Button } from "@/components/ui/button";
 import { PLANS } from "@/lib/plans";
 
@@ -25,7 +25,7 @@ function Landing() {
         <span className="font-display text-2xl text-primary">BabyCare</span>
         <Link to="/auth" className="text-sm font-semibold text-secondary-foreground">Entrar</Link>
       </div>
-      <img src={hero} alt="Mãe a abraçar o seu bebé recém-nascido" width={1024} height={1024} className="mx-auto mt-2 w-4/5 rounded-full mix-blend-multiply" />
+      <img src={motherBabyLogo} alt="Logótipo de uma mãe a carregar e abraçar o seu bebé" width={512} height={512} className="mx-auto mt-5 mb-3 w-3/5 max-w-[260px] object-contain" />
       <div className="px-6 text-center">
         <h1 className="text-3xl leading-tight">Crescer com o seu bebé, cuidar com confiança.</h1>
         <p className="mt-3 text-muted-foreground">Orientações validadas, registos do dia-a-dia e apoio para os primeiros 1.000 dias.</p>
