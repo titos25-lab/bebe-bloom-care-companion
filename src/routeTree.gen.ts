@@ -10,33 +10,194 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as EmergenciaRouteImport } from './routes/emergencia'
+import { Route as PrivacidadeRouteImport } from './routes/privacidade'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthenticatedAssistenteRouteImport } from './routes/_authenticated/assistente'
+import { Route as AuthenticatedCalendarioRouteImport } from './routes/_authenticated/calendario'
+import { Route as AuthenticatedComunidadeRouteImport } from './routes/_authenticated/comunidade'
+import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
+import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
+import { Route as AuthenticatedRegistosRouteImport } from './routes/_authenticated/registos'
+import { Route as AuthenticatedAprenderIndexRouteImport } from './routes/_authenticated/aprender.index'
+import { Route as AuthenticatedAprenderIdRouteImport } from './routes/_authenticated/aprender.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmergenciaRoute = EmergenciaRouteImport.update({
+  id: '/emergencia',
+  path: '/emergencia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadeRoute = PrivacidadeRouteImport.update({
+  id: '/privacidade',
+  path: '/privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAssistenteRoute = AuthenticatedAssistenteRouteImport.update({
+  id: '/assistente',
+  path: '/assistente',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCalendarioRoute = AuthenticatedCalendarioRouteImport.update({
+  id: '/calendario',
+  path: '/calendario',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedComunidadeRoute = AuthenticatedComunidadeRouteImport.update({
+  id: '/comunidade',
+  path: '/comunidade',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedInicioRoute = AuthenticatedInicioRouteImport.update({
+  id: '/inicio',
+  path: '/inicio',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRegistosRoute = AuthenticatedRegistosRouteImport.update({
+  id: '/registos',
+  path: '/registos',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAprenderIndexRoute =
+  AuthenticatedAprenderIndexRouteImport.update({
+    id: '/aprender/',
+    path: '/aprender/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAprenderIdRoute = AuthenticatedAprenderIdRouteImport.update({
+  id: '/aprender/$id',
+  path: '/aprender/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/emergencia': typeof EmergenciaRoute
+  '/privacidade': typeof PrivacidadeRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/assistente': typeof AuthenticatedAssistenteRoute
+  '/calendario': typeof AuthenticatedCalendarioRoute
+  '/comunidade': typeof AuthenticatedComunidadeRoute
+  '/inicio': typeof AuthenticatedInicioRoute
+  '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/registos': typeof AuthenticatedRegistosRoute
+  '/aprender/$id': typeof AuthenticatedAprenderIdRoute
+  '/aprender/': typeof AuthenticatedAprenderIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/emergencia': typeof EmergenciaRoute
+  '/privacidade': typeof PrivacidadeRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/assistente': typeof AuthenticatedAssistenteRoute
+  '/calendario': typeof AuthenticatedCalendarioRoute
+  '/comunidade': typeof AuthenticatedComunidadeRoute
+  '/inicio': typeof AuthenticatedInicioRoute
+  '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/registos': typeof AuthenticatedRegistosRoute
+  '/aprender/$id': typeof AuthenticatedAprenderIdRoute
+  '/aprender': typeof AuthenticatedAprenderIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/emergencia': typeof EmergenciaRoute
+  '/privacidade': typeof PrivacidadeRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/assistente': typeof AuthenticatedAssistenteRoute
+  '/_authenticated/calendario': typeof AuthenticatedCalendarioRoute
+  '/_authenticated/comunidade': typeof AuthenticatedComunidadeRoute
+  '/_authenticated/inicio': typeof AuthenticatedInicioRoute
+  '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/registos': typeof AuthenticatedRegistosRoute
+  '/_authenticated/aprender/$id': typeof AuthenticatedAprenderIdRoute
+  '/_authenticated/aprender/': typeof AuthenticatedAprenderIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/emergencia'
+    | '/privacidade'
+    | '/reset-password'
+    | '/assistente'
+    | '/calendario'
+    | '/comunidade'
+    | '/inicio'
+    | '/onboarding'
+    | '/registos'
+    | '/aprender/$id'
+    | '/aprender/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/emergencia'
+    | '/privacidade'
+    | '/reset-password'
+    | '/assistente'
+    | '/calendario'
+    | '/comunidade'
+    | '/inicio'
+    | '/onboarding'
+    | '/registos'
+    | '/aprender/$id'
+    | '/aprender'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/emergencia'
+    | '/privacidade'
+    | '/reset-password'
+    | '/_authenticated/assistente'
+    | '/_authenticated/calendario'
+    | '/_authenticated/comunidade'
+    | '/_authenticated/inicio'
+    | '/_authenticated/onboarding'
+    | '/_authenticated/registos'
+    | '/_authenticated/aprender/$id'
+    | '/_authenticated/aprender/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  EmergenciaRoute: typeof EmergenciaRoute
+  PrivacidadeRoute: typeof PrivacidadeRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +209,132 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emergencia': {
+      id: '/emergencia'
+      path: '/emergencia'
+      fullPath: '/emergencia'
+      preLoaderRoute: typeof EmergenciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidade': {
+      id: '/privacidade'
+      path: '/privacidade'
+      fullPath: '/privacidade'
+      preLoaderRoute: typeof PrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/assistente': {
+      id: '/_authenticated/assistente'
+      path: '/assistente'
+      fullPath: '/assistente'
+      preLoaderRoute: typeof AuthenticatedAssistenteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/calendario': {
+      id: '/_authenticated/calendario'
+      path: '/calendario'
+      fullPath: '/calendario'
+      preLoaderRoute: typeof AuthenticatedCalendarioRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/comunidade': {
+      id: '/_authenticated/comunidade'
+      path: '/comunidade'
+      fullPath: '/comunidade'
+      preLoaderRoute: typeof AuthenticatedComunidadeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/inicio': {
+      id: '/_authenticated/inicio'
+      path: '/inicio'
+      fullPath: '/inicio'
+      preLoaderRoute: typeof AuthenticatedInicioRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/onboarding': {
+      id: '/_authenticated/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof AuthenticatedOnboardingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/registos': {
+      id: '/_authenticated/registos'
+      path: '/registos'
+      fullPath: '/registos'
+      preLoaderRoute: typeof AuthenticatedRegistosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/aprender/': {
+      id: '/_authenticated/aprender/'
+      path: '/aprender'
+      fullPath: '/aprender/'
+      preLoaderRoute: typeof AuthenticatedAprenderIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/aprender/$id': {
+      id: '/_authenticated/aprender/$id'
+      path: '/aprender/$id'
+      fullPath: '/aprender/$id'
+      preLoaderRoute: typeof AuthenticatedAprenderIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAssistenteRoute: typeof AuthenticatedAssistenteRoute
+  AuthenticatedCalendarioRoute: typeof AuthenticatedCalendarioRoute
+  AuthenticatedComunidadeRoute: typeof AuthenticatedComunidadeRoute
+  AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
+  AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedRegistosRoute: typeof AuthenticatedRegistosRoute
+  AuthenticatedAprenderIdRoute: typeof AuthenticatedAprenderIdRoute
+  AuthenticatedAprenderIndexRoute: typeof AuthenticatedAprenderIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAssistenteRoute: AuthenticatedAssistenteRoute,
+  AuthenticatedCalendarioRoute: AuthenticatedCalendarioRoute,
+  AuthenticatedComunidadeRoute: AuthenticatedComunidadeRoute,
+  AuthenticatedInicioRoute: AuthenticatedInicioRoute,
+  AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedRegistosRoute: AuthenticatedRegistosRoute,
+  AuthenticatedAprenderIdRoute: AuthenticatedAprenderIdRoute,
+  AuthenticatedAprenderIndexRoute: AuthenticatedAprenderIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  EmergenciaRoute: EmergenciaRoute,
+  PrivacidadeRoute: PrivacidadeRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
