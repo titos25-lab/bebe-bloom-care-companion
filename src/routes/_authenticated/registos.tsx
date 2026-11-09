@@ -41,7 +41,7 @@ function Logs() {
       user_id: baby.user_id, baby_id: baby.id, kind, started_at: new Date(at).toISOString(),
       ended_at: kind === "sleep" && end ? new Date(end).toISOString() : null, details,
     });
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Registado 💗");
     if (kind === "diaper" && poop && ["branco", "preto", "vermelho"].includes(color)) toast.warning("Fezes desta cor exigem avaliação médica. Consulte o seu profissional de saúde.", { duration: 8000 });
     qc.invalidateQueries();
@@ -76,8 +76,8 @@ function Logs() {
         <p className="mb-3 text-xs text-muted-foreground">A partir do 5.º dia de vida, espera-se 6 ou mais fraldas molhadas por dia. Menos do que isso pode indicar desidratação.</p>
         <ul className="space-y-2">
           {(logs.data ?? []).map((x) => {
-            const d = x.details as Record<string, unknown>;
-            const desc = x.kind === "feed" ? `Mamada · ${d.type} · ${d.minutes} min` : x.kind === "sleep" ? `Sono${x.ended_at ? ` · ${Math.round((new Date(x.ended_at).getTime() - new Date(x.started_at).getTime()) / 60000)} min` : " · em curso"}` : `Fralda · ${[d.wet && "molhada", d.poop && `fezes ${d.color}`].filter(Boolean).join(", ") || "seca"}`;
+            const d = x.details as Record<string, string | number | boolean | null>;
+            const desc = x.kind === "feed" ? `Mamada · ${d['type']} · ${d['minutes']} min` : x.kind === "sleep" ? `Sono${x.ended_at ? ` · ${Math.round((new Date(x.ended_at).getTime() - new Date(x.started_at).getTime()) / 60000)} min` : " · em curso"}` : `Fralda · ${[d['wet'] && "molhada", d['poop'] && `fezes ${d['color']}`].filter(Boolean).join(", ") || "seca"}`;
             return (
               <li key={x.id} className="flex items-center justify-between rounded-xl bg-card px-3 py-2 text-sm">
                 <div><p>{desc}</p><p className="text-xs text-muted-foreground">{new Date(x.started_at).toLocaleString("pt-PT", { dateStyle: "short", timeStyle: "short" })}</p></div>

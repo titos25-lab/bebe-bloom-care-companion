@@ -30,7 +30,7 @@ function Home() {
   if (!baby) return <Navigate to="/onboarding" />;
 
   const age = babyAge(baby.birth_date);
-  const ms = milestonesFor(age.months);
+  const ms = milestonesFor(age.months)!;
   const l = logs.data ?? [];
   const feeds = l.filter((x) => x.kind === "feed");
   const diapers = l.filter((x) => x.kind === "diaper");

@@ -20,6 +20,8 @@ import { Route as AuthenticatedCalendarioRouteImport } from './routes/_authentic
 import { Route as AuthenticatedComunidadeRouteImport } from './routes/_authenticated/comunidade'
 import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
+import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
+import { Route as AuthenticatedPlanosRouteImport } from './routes/_authenticated/planos'
 import { Route as AuthenticatedRegistosRouteImport } from './routes/_authenticated/registos'
 import { Route as AuthenticatedAprenderIndexRouteImport } from './routes/_authenticated/aprender.index'
 import { Route as AuthenticatedAprenderIdRouteImport } from './routes/_authenticated/aprender.$id'
@@ -78,6 +80,16 @@ const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
   path: '/onboarding',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPlanosRoute = AuthenticatedPlanosRouteImport.update({
+  id: '/planos',
+  path: '/planos',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedRegistosRoute = AuthenticatedRegistosRouteImport.update({
   id: '/registos',
   path: '/registos',
@@ -106,6 +118,8 @@ export interface FileRoutesByFullPath {
   '/comunidade': typeof AuthenticatedComunidadeRoute
   '/inicio': typeof AuthenticatedInicioRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
+  '/planos': typeof AuthenticatedPlanosRoute
   '/registos': typeof AuthenticatedRegistosRoute
   '/aprender/$id': typeof AuthenticatedAprenderIdRoute
   '/aprender/': typeof AuthenticatedAprenderIndexRoute
@@ -121,6 +135,8 @@ export interface FileRoutesByTo {
   '/comunidade': typeof AuthenticatedComunidadeRoute
   '/inicio': typeof AuthenticatedInicioRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
+  '/planos': typeof AuthenticatedPlanosRoute
   '/registos': typeof AuthenticatedRegistosRoute
   '/aprender/$id': typeof AuthenticatedAprenderIdRoute
   '/aprender': typeof AuthenticatedAprenderIndexRoute
@@ -138,6 +154,8 @@ export interface FileRoutesById {
   '/_authenticated/comunidade': typeof AuthenticatedComunidadeRoute
   '/_authenticated/inicio': typeof AuthenticatedInicioRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
+  '/_authenticated/planos': typeof AuthenticatedPlanosRoute
   '/_authenticated/registos': typeof AuthenticatedRegistosRoute
   '/_authenticated/aprender/$id': typeof AuthenticatedAprenderIdRoute
   '/_authenticated/aprender/': typeof AuthenticatedAprenderIndexRoute
@@ -155,6 +173,8 @@ export interface FileRouteTypes {
     | '/comunidade'
     | '/inicio'
     | '/onboarding'
+    | '/perfil'
+    | '/planos'
     | '/registos'
     | '/aprender/$id'
     | '/aprender/'
@@ -170,6 +190,8 @@ export interface FileRouteTypes {
     | '/comunidade'
     | '/inicio'
     | '/onboarding'
+    | '/perfil'
+    | '/planos'
     | '/registos'
     | '/aprender/$id'
     | '/aprender'
@@ -186,6 +208,8 @@ export interface FileRouteTypes {
     | '/_authenticated/comunidade'
     | '/_authenticated/inicio'
     | '/_authenticated/onboarding'
+    | '/_authenticated/perfil'
+    | '/_authenticated/planos'
     | '/_authenticated/registos'
     | '/_authenticated/aprender/$id'
     | '/_authenticated/aprender/'
@@ -279,6 +303,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedOnboardingRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/perfil': {
+      id: '/_authenticated/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof AuthenticatedPerfilRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/planos': {
+      id: '/_authenticated/planos'
+      path: '/planos'
+      fullPath: '/planos'
+      preLoaderRoute: typeof AuthenticatedPlanosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/registos': {
       id: '/_authenticated/registos'
       path: '/registos'
@@ -309,6 +347,8 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedComunidadeRoute: typeof AuthenticatedComunidadeRoute
   AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
+  AuthenticatedPlanosRoute: typeof AuthenticatedPlanosRoute
   AuthenticatedRegistosRoute: typeof AuthenticatedRegistosRoute
   AuthenticatedAprenderIdRoute: typeof AuthenticatedAprenderIdRoute
   AuthenticatedAprenderIndexRoute: typeof AuthenticatedAprenderIndexRoute
@@ -320,6 +360,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedComunidadeRoute: AuthenticatedComunidadeRoute,
   AuthenticatedInicioRoute: AuthenticatedInicioRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
+  AuthenticatedPlanosRoute: AuthenticatedPlanosRoute,
   AuthenticatedRegistosRoute: AuthenticatedRegistosRoute,
   AuthenticatedAprenderIdRoute: AuthenticatedAprenderIdRoute,
   AuthenticatedAprenderIndexRoute: AuthenticatedAprenderIndexRoute,

@@ -20,7 +20,7 @@ export const askAssistant = createServerFn({ method: "POST" })
 
     const { data: baby } = await supabase.from("babies").select("name, birth_date").order("created_at").limit(1).maybeSingle();
     const ageMonths = baby ? Math.floor((Date.now() - new Date(baby.birth_date).getTime()) / (30.44 * 86400000)) : null;
-    const last = data.messages[data.messages.length - 1].content;
+    const last = data.messages[data.messages.length - 1]?.content ?? "";
     const danger = DANGER.test(last);
 
     const { generateResponse } = await import("@lovable.dev/ai-gateway");

@@ -22,9 +22,9 @@ function Onboarding() {
     e.preventDefault();
     const u = (await supabase.auth.getUser()).data.user!;
     const p = await supabase.from("profiles").upsert({ id: u.id, mother_name: f.mother, country: f.country, consent_at: new Date().toISOString() });
-    if (p.error) return toast.error(p.error.message);
+    if (p.error) { toast.error(p.error.message); return; }
     const b = await supabase.from("babies").insert({ user_id: u.id, name: f.baby, birth_date: f.birth, sex: f.sex || null, first_child: f.first === "sim" });
-    if (b.error) return toast.error(b.error.message);
+    if (b.error) { toast.error(b.error.message); return; }
     await qc.invalidateQueries();
     nav({ to: "/inicio" });
   }

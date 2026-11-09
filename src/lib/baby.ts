@@ -41,7 +41,7 @@ const TIPS = [
 ];
 export function tipOfDay(date = new Date()) {
   const n = Math.floor(date.getTime() / 86400000);
-  return TIPS[n % TIPS.length];
+  return TIPS[n % TIPS.length]!;
 }
 
 export function dailyGuidance(months: number) {

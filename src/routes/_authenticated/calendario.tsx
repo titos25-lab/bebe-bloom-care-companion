@@ -28,7 +28,7 @@ function Cal() {
     e.preventDefault();
     if (!baby) return;
     const { error } = await supabase.from("events").insert({ user_id: baby.user_id, baby_id: baby.id, kind, title, due_at: new Date(when).toISOString() });
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     setTitle(""); setWhen(""); qc.invalidateQueries();
   }
   async function toggle(id: string, done: boolean) { await supabase.from("events").update({ done: !done }).eq("id", id); qc.invalidateQueries(); }

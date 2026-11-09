@@ -27,7 +27,7 @@ function Community() {
   async function post() {
     if (!user || content.trim().length < 3) return;
     const { data, error } = await supabase.from("community_posts").insert({ user_id: user.id, content: content.trim(), topic, author_name: profile?.mother_name?.split(" ")[0] ?? "Mãe" }).select().single();
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     if (data.hidden) toast.warning("A sua publicação ficou em revisão: parece conter dados pessoais ou um conselho de risco.");
     else toast.success("Publicado 💗");
     setContent(""); qc.invalidateQueries({ queryKey: ["posts"] });

@@ -60,7 +60,7 @@ function AuthPage() {
 
   async function social(provider: "google" | "apple") {
     const r = await lovable.auth.signInWithOAuth(provider, { redirect_uri: window.location.origin + "/auth" });
-    if (r.error) return toast.error(String(r.error.message ?? r.error));
+    if (r.error) { toast.error(String(r.error.message ?? r.error)); return; }
     if (r.redirected) return;
     nav({ to: "/inicio" });
   }
