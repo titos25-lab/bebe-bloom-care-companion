@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Mãe a carregar o bebé</title>
+  <desc id="desc">Símbolo azul de uma mãe a abraçar o seu bebé, dentro de um círculo suave.</desc>
+  <circle cx="256" cy="256" r="226" fill="#EAF5FF"/>
+  <circle cx="256" cy="256" r="205" fill="none" stroke="#B9DDF8" stroke-width="8"/>
+  <path d="M171 184c0-61 38-103 91-103 48 0 82 34 88 83 3 24-4 47-17 64-13-24-36-39-63-40-22 0-40 9-55 26-13-6-26-17-36-30-5 0-8 0-8 0Z" fill="#287DBB"/>
+  <path d="M179 194c-20 34-25 74-13 112 10 33 31 57 60 75l-3 42h147l-8-53c30-24 48-57 48-95 0-27-9-50-25-68-11 26-34 43-65 48-35 6-68-7-92-34-18-20-29-39-32-58-7 8-13 18-17 31Z" fill="#4A9BD1"/>
+  <path d="M244 213c-24 4-42 24-42 49 0 22 13 41 33 48 14 5 30 3 41-7-13-12-19-28-17-46 2-17 11-31 25-41-12-5-26-6-40-3Z" fill="#F7FCFF"/>
+  <path d="M286 255c-2-25 15-46 39-49 22-3 43 12 47 34 4 22-10 43-32 49-22 6-47-10-54-34Z" fill="#D7EEFF"/>
+  <path d="M235 305c18 17 43 24 69 18 24-5 43-22 53-44 20 12 33 34 33 59v65H151v-30c0-34 18-62 47-77 11-6 24-8 37-8Z" fill="#287DBB"/>
+  <path d="M220 319c14 17 33 27 56 29 26 2 49-8 66-27 15 11 25 28 27 47H174c4-22 21-41 46-49Z" fill="#EAF5FF"/>
+  <path d="M168 376c25 21 56 32 88 32 34 0 65-12 90-34" fill="none" stroke="#1F6FA8" stroke-width="12" stroke-linecap="round"/>
+  <path d="M130 238c-20 37-27 78-19 119 6 30 19 56 39 77" fill="none" stroke="#8CC5ED" stroke-width="12" stroke-linecap="round"/>
+  <path d="M382 177c18 22 29 49 32 78" fill="none" stroke="#8CC5ED" stroke-width="12" stroke-linecap="round"/>
+  <path d="M211 139c15-19 36-29 60-29" fill="none" stroke="#B9DDF8" stroke-width="9" stroke-linecap="round"/>
+</svg>
