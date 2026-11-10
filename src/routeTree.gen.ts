@@ -158,7 +158,6 @@ export interface FileRoutesById {
   '/privacidade': typeof PrivacidadeRoute
   '/reset-password': typeof ResetPasswordRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
-  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/assistente': typeof AuthenticatedAssistenteRoute
   '/_authenticated/calendario': typeof AuthenticatedCalendarioRoute
   '/_authenticated/comunidade': typeof AuthenticatedComunidadeRoute
@@ -196,6 +195,7 @@ export interface FileRouteTypes {
     | '/emergencia'
     | '/privacidade'
     | '/reset-password'
+    | '/admin'
     | '/assistente'
     | '/calendario'
     | '/comunidade'
