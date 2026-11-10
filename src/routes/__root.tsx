@@ -83,10 +83,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "BabyCare — Meu Bebé" },
+      { title: "Bebê Saudável" },
       { name: "description", content: "Crescer com o seu bebé, cuidar com confiança. Apoio às mães dos 0 aos 24 meses." },
       { name: "theme-color", content: "#f6e7e4" },
-      { property: "og:title", content: "BabyCare — Meu Bebé" },
+      { property: "og:title", content: "Bebê Saudável" },
       { property: "og:description", content: "Crescer com o seu bebé, cuidar com confiança." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
