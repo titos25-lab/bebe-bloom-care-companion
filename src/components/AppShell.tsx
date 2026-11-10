@@ -14,7 +14,7 @@ export function AppShell({ title, children }: { title?: string; children: ReactN
   return (
     <div className="mx-auto min-h-screen max-w-md bg-background pb-24">
       <header className="sticky top-0 z-20 flex items-center justify-between bg-background/90 px-5 py-3 backdrop-blur">
-        <Link to="/inicio" className="font-display text-xl text-primary">BabyCare</Link>
+        <Link to="/inicio" className="font-display text-xl text-primary">Bebê Saudável</Link>
         {title && <span className="text-sm text-muted-foreground">{title}</span>}
         <Link to="/emergencia" className="flex items-center gap-1 rounded-full bg-destructive px-3 py-1.5 text-xs font-bold text-destructive-foreground">
           <Siren className="size-4" /> SOS
