@@ -1,6 +1,6 @@
 import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Milk, Moon, Baby, Syringe, Stethoscope, Sparkles, Siren, Lock, RefreshCw, BookHeart } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { AppShell, Card, Section } from "@/components/AppShell";
@@ -17,6 +17,8 @@ function Home() {
   const { data: profile } = useProfile();
   const { data: premium } = useIsPremium();
   const [tipOffset, setTipOffset] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  useEffect(() => { const timer = window.setInterval(() => setActiveSlide((current) => (current + 1) % 3), 5000); return () => window.clearInterval(timer); }, []);
   const since = new Date(Date.now() - 86400000).toISOString();
   const logs = useQuery({
     queryKey: ["logs24", baby?.id],
@@ -58,13 +60,13 @@ function Home() {
           <h2 className="text-lg">Cada família é única 💗</h2>
           <span className="text-xs text-muted-foreground">BabyCare</span>
         </div>
-        <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
+        <div className="relative h-44 overflow-hidden rounded-3xl bg-muted">
           {[
             { image: "https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?auto=format&fit=crop&w=900&q=85", title: "Amor que acolhe", subtitle: "Mães e bebés de todas as cores e histórias." },
             { image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=85", title: "Crescemos juntos", subtitle: "Cada etapa merece ser celebrada." },
             { image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=85", title: "Uma comunidade para si", subtitle: "Partilhe a jornada com outras mães." },
-          ].map((slide) => (
-            <article key={slide.title} className="relative h-44 min-w-[85%] snap-center overflow-hidden rounded-3xl bg-muted">
+          ].map((slide, index) => (
+            <article key={slide.title} aria-hidden={activeSlide !== index} className={`absolute inset-0 transition-opacity duration-700 ${activeSlide === index ? "opacity-100" : "pointer-events-none opacity-0"}`}>
               <img src={slide.image} alt={slide.title} loading="lazy" className="h-full w-full object-cover" onError={(e) => { e.currentTarget.src = "/favicon.ico"; }} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4 text-white">
@@ -74,7 +76,9 @@ function Home() {
             </article>
           ))}
         </div>
-        <p className="mt-1 text-center text-[10px] text-muted-foreground">Deslize para ver mais</p>
+        <div className="mt-2 flex justify-center gap-2" aria-label="Escolher imagem">
+          {[0, 1, 2].map((index) => <button key={index} onClick={() => setActiveSlide(index)} aria-label={`Ver imagem ${index + 1}`} className={`h-2 rounded-full transition-all ${activeSlide === index ? "w-6 bg-primary" : "w-2 bg-muted-foreground/40"}`} />)}
+        </div>
       </section>
 
       <Link to="/comunidade" className="mt-4 flex items-center gap-3 rounded-2xl border border-primary/20 bg-card p-4 shadow-soft">
