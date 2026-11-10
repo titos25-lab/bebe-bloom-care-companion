@@ -26,7 +26,7 @@ const MILESTONES: { upTo: number; title: string; items: string[] }[] = [
   { upTo: 25, title: "18 a 24 meses", items: ["Corre e sobe degraus", "Junta duas palavras", "Brinca ao faz-de-conta"] },
 ];
 export function milestonesFor(months: number) {
-  return MILESTONES.find((m) => months < m.upTo) ?? MILESTONES[MILESTONES.length - 1];
+  return MILESTONES.find((m) => months < m.upTo) ?? MILESTONES[MILESTONES.length - 1]!;
 }
 
 const DAILY_TIPS = [

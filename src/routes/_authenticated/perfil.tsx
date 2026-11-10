@@ -11,7 +11,8 @@ export const Route = createFileRoute("/_authenticated/perfil")({
 });
 
 function Profile() {
-  const { data: user } = useUser();\n  const { data: isAdmin } = useIsAdmin();
+  const { data: user } = useUser();
+  const { data: isAdmin } = useIsAdmin();
   const { data: profile } = useProfile();
   const { data: baby } = useBaby();
   const qc = useQueryClient();
