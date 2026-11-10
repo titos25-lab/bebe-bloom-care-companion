@@ -37,6 +37,9 @@ export function useIsPremium() {
     queryFn: async () => {
       const u = (await supabase.auth.getUser()).data.user;
       if (!u) return false;
+      // Administrators have permanent Premium access without a paid subscription.
+      const { data: admin } = await supabase.rpc("has_role", { _user_id: u.id, _role: "admin" });
+      if (admin) return true;
       const { data } = await supabase.rpc("is_premium", { _user_id: u.id });
       return !!data;
     },
