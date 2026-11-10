@@ -1,16 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">Mãe a carregar o bebé</title>
-  <desc id="desc">Símbolo azul de uma mãe a abraçar o seu bebé, dentro de um círculo suave.</desc>
-  <circle cx="256" cy="256" r="226" fill="#EAF5FF"/>
-  <circle cx="256" cy="256" r="205" fill="none" stroke="#B9DDF8" stroke-width="8"/>
-  <path d="M171 184c0-61 38-103 91-103 48 0 82 34 88 83 3 24-4 47-17 64-13-24-36-39-63-40-22 0-40 9-55 26-13-6-26-17-36-30-5 0-8 0-8 0Z" fill="#287DBB"/>
-  <path d="M179 194c-20 34-25 74-13 112 10 33 31 57 60 75l-3 42h147l-8-53c30-24 48-57 48-95 0-27-9-50-25-68-11 26-34 43-65 48-35 6-68-7-92-34-18-20-29-39-32-58-7 8-13 18-17 31Z" fill="#4A9BD1"/>
-  <path d="M244 213c-24 4-42 24-42 49 0 22 13 41 33 48 14 5 30 3 41-7-13-12-19-28-17-46 2-17 11-31 25-41-12-5-26-6-40-3Z" fill="#F7FCFF"/>
-  <path d="M286 255c-2-25 15-46 39-49 22-3 43 12 47 34 4 22-10 43-32 49-22 6-47-10-54-34Z" fill="#D7EEFF"/>
-  <path d="M235 305c18 17 43 24 69 18 24-5 43-22 53-44 20 12 33 34 33 59v65H151v-30c0-34 18-62 47-77 11-6 24-8 37-8Z" fill="#287DBB"/>
-  <path d="M220 319c14 17 33 27 56 29 26 2 49-8 66-27 15 11 25 28 27 47H174c4-22 21-41 46-49Z" fill="#EAF5FF"/>
-  <path d="M168 376c25 21 56 32 88 32 34 0 65-12 90-34" fill="none" stroke="#1F6FA8" stroke-width="12" stroke-linecap="round"/>
-  <path d="M130 238c-20 37-27 78-19 119 6 30 19 56 39 77" fill="none" stroke="#8CC5ED" stroke-width="12" stroke-linecap="round"/>
-  <path d="M382 177c18 22 29 49 32 78" fill="none" stroke="#8CC5ED" stroke-width="12" stroke-linecap="round"/>
-  <path d="M211 139c15-19 36-29 60-29" fill="none" stroke="#B9DDF8" stroke-width="9" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" role="img" aria-labelledby="title desc">
+  <title id="title">Mãe e bebé num abraço</title>
+  <desc id="desc">Ilustração delicada de uma mãe a segurar o seu bebé junto ao peito, em tons suaves de azul.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F1F8FF"/>
+      <stop offset="1" stop-color="#DCEEFF"/>
+    </linearGradient>
+    <linearGradient id="dress" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#69B3E5"/>
+      <stop offset="1" stop-color="#287DBB"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="320" cy="280" rx="258" ry="245" fill="url(#bg)"/>
+  <circle cx="320" cy="280" r="224" fill="none" stroke="#C6E2F8" stroke-width="5"/>
+  <path d="M171 492c8-82 49-143 117-164 24-8 47-10 70-5 74 15 115 77 120 169H171Z" fill="url(#dress)"/>
+  <path d="M220 185c0-91 53-145 119-145 70 0 116 54 116 135 0 40-13 76-35 103-18-33-47-54-83-57-34-3-62 11-83 37-22-18-34-43-34-73Z" fill="#245D89"/>
+  <ellipse cx="343" cy="190" rx="82" ry="101" fill="#C98568"/>
+  <path d="M264 169c12-70 52-112 112-112 49 0 85 30 99 78-25-16-49-23-75-20-35 4-62 23-82 54-17 4-35 4-54 0Z" fill="#245D89"/>
+  <path d="M277 196c9 9 20 13 32 12M367 207c10-2 18-7 24-15" fill="none" stroke="#754A40" stroke-width="5" stroke-linecap="round"/>
+  <path d="M319 244c15 13 34 14 49 1" fill="none" stroke="#9D5E50" stroke-width="5" stroke-linecap="round"/>
+  <path d="M287 280c-26 17-43 43-49 76-7 39 9 76 42 101 32 25 77 33 116 18 39-15 64-48 65-87 1-29-11-55-34-74-22-18-48-26-77-24-23 2-44-2-63-10Z" fill="#F8FCFF"/>
+  <path d="M326 302c-34-2-62 18-67 48-5 28 14 53 42 58 25 5 49-10 55-34 5-19-2-37-18-49 15-13 35-17 54-10 23 9 36 31 33 55-3 25-22 44-48 49" fill="none" stroke="#8ABFE4" stroke-width="9" stroke-linecap="round"/>
+  <path d="M312 327c-3-25 14-45 39-48 23-3 44 13 47 36 3 22-12 42-34 46-23 4-49-11-52-34Z" fill="#E7B49B"/>
+  <path d="M313 326c8-25 28-42 53-43 15 0 29 6 39 17-12-31-39-48-69-43-30 5-49 31-46 60 1 13 7 25 17 34-1-8 1-17 6-25Z" fill="#7CB7E1"/>
+  <path d="M287 371c-20 20-24 48-11 70 13 22 39 31 64 23" fill="none" stroke="#287DBB" stroke-width="12" stroke-linecap="round"/>
+  <path d="M394 365c21 5 37 22 41 44 3 17-3 34-15 47" fill="none" stroke="#287DBB" stroke-width="12" stroke-linecap="round"/>
+  <path d="M190 337c-24 34-32 76-21 116M465 132c17 20 28 45 31 72" fill="none" stroke="#A7D1F0" stroke-width="10" stroke-linecap="round"/>
+  <path d="m159 179 8 17 18 3-14 12 3 18-15-9-16 9 4-18-14-12 18-3 8-17ZM478 287l7 14 15 2-11 10 3 15-14-7-13 7 3-15-11-10 15-2 6-14Z" fill="#8CC4EA"/>
+  <path d="M233 478c27 17 57 25 89 25" fill="none" stroke="#B5D9F3" stroke-width="8" stroke-linecap="round"/>
 </svg>
