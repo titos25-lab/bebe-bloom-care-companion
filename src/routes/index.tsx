@@ -7,9 +7,9 @@ import { PLANS } from "@/lib/plans";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BabyCare — Crescer com o seu bebé, cuidar com confiança" },
+      { title: "Bebê Saudável — Crescer com o seu bebé, cuidar com confiança" },
       { name: "description", content: "Guia, registos e apoio para mães e cuidadores de bebés dos 0 aos 24 meses." },
-      { property: "og:title", content: "BabyCare — Meu Bebé" },
+      { property: "og:title", content: "Bebê Saudável" },
       { property: "og:description", content: "Guia, registos e apoio para mães dos 0 aos 24 meses." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -22,7 +22,7 @@ function Landing() {
   return (
     <div className="mx-auto min-h-screen max-w-md bg-gradient-soft">
       <div className="flex items-center justify-between px-5 pt-5">
-        <span className="font-display text-2xl text-primary">BabyCare</span>
+        <span className="font-display text-2xl text-primary">Bebê Saudável</span>
         <Link to="/auth" className="text-sm font-semibold text-secondary-foreground">Entrar</Link>
       </div>
       <img src={motherBabyLogo} alt="Logótipo de uma mãe a carregar e abraçar o seu bebé" width={512} height={512} className="mx-auto mt-5 mb-3 w-3/5 max-w-[260px] object-contain" />
