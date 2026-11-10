@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Send, Lock, Siren } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
-import { askAssistant } from "@/server/assistant.functions";
+import { askAssistant } from "@/lib/assistant.functions";
 import { useIsPremium, useIsAdmin } from "@/lib/session";
 
 export const Route = createFileRoute("/_authenticated/assistente")({
