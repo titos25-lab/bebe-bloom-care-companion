@@ -15,7 +15,8 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as EmergenciaRouteImport } from './routes/emergencia'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
-import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'\nimport { Route as AuthenticatedAssistenteRouteImport } from './routes/_authenticated/assistente'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAssistenteRouteImport } from './routes/_authenticated/assistente'
 import { Route as AuthenticatedCalendarioRouteImport } from './routes/_authenticated/calendario'
 import { Route as AuthenticatedComunidadeRouteImport } from './routes/_authenticated/comunidade'
 import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
@@ -55,7 +56,12 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({\n  id: '/admin',\n  path: '/admin',\n  getParentRoute: () => AuthenticatedRouteRoute,\n} as any)\nconst AuthenticatedAssistenteRoute = AuthenticatedAssistenteRouteImport.update({
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAssistenteRoute = AuthenticatedAssistenteRouteImport.update({
   id: '/assistente',
   path: '/assistente',
   getParentRoute: () => AuthenticatedRouteRoute,
@@ -113,7 +119,8 @@ export interface FileRoutesByFullPath {
   '/emergencia': typeof EmergenciaRoute
   '/privacidade': typeof PrivacidadeRoute
   '/reset-password': typeof ResetPasswordRoute
-  '/admin': typeof AuthenticatedAdminRoute\n  '/assistente': typeof AuthenticatedAssistenteRoute
+  '/admin': typeof AuthenticatedAdminRoute
+  '/assistente': typeof AuthenticatedAssistenteRoute
   '/calendario': typeof AuthenticatedCalendarioRoute
   '/comunidade': typeof AuthenticatedComunidadeRoute
   '/inicio': typeof AuthenticatedInicioRoute
@@ -149,7 +156,8 @@ export interface FileRoutesById {
   '/emergencia': typeof EmergenciaRoute
   '/privacidade': typeof PrivacidadeRoute
   '/reset-password': typeof ResetPasswordRoute
-  '/_authenticated/admin': typeof AuthenticatedAdminRoute\n  '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/assistente': typeof AuthenticatedAssistenteRoute
   '/_authenticated/calendario': typeof AuthenticatedCalendarioRoute
   '/_authenticated/comunidade': typeof AuthenticatedComunidadeRoute
@@ -169,7 +177,8 @@ export interface FileRouteTypes {
     | '/emergencia'
     | '/privacidade'
     | '/reset-password'
-    | '/admin'\n    | '/assistente'
+    | '/admin'
+    | '/assistente'
     | '/calendario'
     | '/comunidade'
     | '/inicio'
@@ -204,7 +213,8 @@ export interface FileRouteTypes {
     | '/emergencia'
     | '/privacidade'
     | '/reset-password'
-    | '/_authenticated/admin'\n    | '/_authenticated/assistente'
+    | '/_authenticated/admin'
+    | '/_authenticated/assistente'
     | '/_authenticated/calendario'
     | '/_authenticated/comunidade'
     | '/_authenticated/inicio'
@@ -350,7 +360,8 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
-  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute\n  AuthenticatedAssistenteRoute: typeof AuthenticatedAssistenteRoute
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+  AuthenticatedAssistenteRoute: typeof AuthenticatedAssistenteRoute
   AuthenticatedCalendarioRoute: typeof AuthenticatedCalendarioRoute
   AuthenticatedComunidadeRoute: typeof AuthenticatedComunidadeRoute
   AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
