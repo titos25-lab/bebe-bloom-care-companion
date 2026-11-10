@@ -37,7 +37,7 @@ function Home() {
   const ms = milestonesFor(age.months);
   const tip = tipOfDay(new Date(), age.months, tipOffset);
   const hour = new Date().getHours();
-  const greeting = hour >= 5 && hour < 12 ? "Bom dia, Mamãe" : hour >= 12 && hour < 18 ? "Boa tarde, Mamãe" : "Boa noite, Mamãe";
+  const greeting = hour >= 5 && hour < 12 ? "Bom dia" : hour >= 12 && hour < 18 ? "Boa tarde" : "Boa noite";
   const l = logs.data ?? [];
   const feeds = l.filter((x) => x.kind === "feed");
   const diapers = l.filter((x) => x.kind === "diaper");
@@ -47,7 +47,7 @@ function Home() {
   return (
     <AppShell>
       <div className="mt-2 rounded-3xl bg-gradient-soft p-5 shadow-soft">
-        <p className="text-sm text-muted-foreground">{greeting}, {profile?.mother_name?.split(" ")[0] ?? "mamã"} 💗</p>
+        <p className="text-sm text-muted-foreground">{greeting}, Mamãe {profile?.mother_name?.split(" ")[0] ?? ""} 💗</p>
         <h1 className="mt-1 text-3xl">{baby.name}</h1>
         <div className="mt-3 flex gap-3">
           <div className="rounded-2xl bg-card/80 px-4 py-2"><p className="text-xs text-muted-foreground">Idade</p><p className="font-display text-xl">{ageLabel(baby.birth_date)}</p></div>
