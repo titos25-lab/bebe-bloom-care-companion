@@ -37,7 +37,7 @@ function Logs() {
 
   async function add() {
     if (!baby) return;
-    if (kind === "feed" && !premium) { toast.error("O registo detalhado de mamadas é uma funcionalidade Premium."); return; }
+    if (!premium) { toast.error("Os registos de mamadas, sono e fraldas são funcionalidades Premium."); return; }
     const details = kind === "feed" ? { type: feedType, minutes: Number(minutes) } : kind === "diaper" ? { wet, poop, color: poop ? color : null } : {};
     const { error } = await supabase.from("care_logs").insert({
       user_id: baby.user_id, baby_id: baby.id, kind, started_at: new Date(at).toISOString(),
@@ -51,7 +51,7 @@ function Logs() {
   async function del(id: string) { await supabase.from("care_logs").delete().eq("id", id); qc.invalidateQueries(); }
 
   const tab = (k: Kind, label: string, Icon: typeof Milk) => (
-    <button onClick={() => setKind(k)} className={`flex flex-1 flex-col items-center gap-1 rounded-2xl py-3 text-sm ${kind === k ? "bg-primary text-primary-foreground" : "bg-card"}`}><Icon className="size-5" />{label}{k === "feed" && !premium && <Lock className="size-3" />}</button>
+    <button onClick={() => setKind(k)} className={`flex flex-1 flex-col items-center gap-1 rounded-2xl py-3 text-sm ${kind === k ? "bg-primary text-primary-foreground" : "bg-card"}`}><Icon className="size-5" />{label}{!premium && <Lock className="size-3" />}</button>
   );
   const input = "h-10 w-full rounded-xl border border-input bg-background px-3 text-sm";
   const today = (logs.data ?? []).filter((x) => new Date(x.started_at).toDateString() === new Date().toDateString());
@@ -59,11 +59,11 @@ function Logs() {
   return (
     <AppShell title="Registos">
       <div className="mt-2 flex gap-2">{tab("feed", "Mamada", Milk)}{tab("sleep", "Sono", Moon)}{tab("diaper", "Fralda", Baby)}</div>
-      {kind === "feed" && !premium ? (
+      {!premium ? (
         <Card className="mt-3 border-primary/20 text-center">
           <Lock className="mx-auto size-8 text-primary" />
-          <h2 className="mt-2 font-semibold">Registo de mamadas Premium</h2>
-          <p className="mt-1 text-sm text-muted-foreground">Registe o peito utilizado, duração, biberões e acompanhe o histórico das mamadas do seu bebé.</p>
+          <h2 className="mt-2 font-semibold">Registos do bebé — Premium</h2>
+          <p className="mt-1 text-sm text-muted-foreground">Registe mamadas, acompanhe os períodos de sono e controle as fraldas molhadas e evacuações. Consulte o histórico e acompanhe a rotina do seu bebé num só lugar.</p>
           <Button asChild className="mt-3 rounded-full"><Link to="/planos">Desbloquear Premium</Link></Button>
         </Card>
       ) : (
@@ -83,10 +83,13 @@ function Logs() {
         </Card>
       )}
 
+       {!premium ? (
+        <Card className="mt-4 border-primary/20 text-center"><Lock className="mx-auto size-6 text-primary" /><h2 className="mt-2 font-semibold">Histórico de registos Premium</h2><p className="mt-1 text-sm text-muted-foreground">Desbloqueie para consultar e gerir os registos do seu bebé.</p><Button asChild className="mt-3 rounded-full"><Link to="/planos">Desbloquear Premium</Link></Button></Card>
+      ) : (
       <Section title={`Hoje: ${today.filter((x) => x.kind === "diaper" && (x.details as { wet?: boolean }).wet).length} fraldas molhadas`}>
         <p className="mb-3 text-xs text-muted-foreground">A partir do 5.º dia de vida, espera-se 6 ou mais fraldas molhadas por dia. Menos do que isso pode indicar desidratação.</p>
         <ul className="space-y-2">
-          {(logs.data ?? []).filter((x) => x.kind !== "feed" || premium).map((x) => {
+          {(logs.data ?? []).map((x) => {
             const d = x.details as Record<string, string | number | boolean | null>;
             const desc = x.kind === "feed" ? `Mamada · ${d["type"]} · ${d["minutes"]} min` : x.kind === "sleep" ? `Sono${x.ended_at ? ` · ${Math.round((new Date(x.ended_at).getTime() - new Date(x.started_at).getTime()) / 60000)} min` : " · em curso"}` : `Fralda · ${[d["wet"] && "molhada", d["poop"] && `fezes ${d["color"]}`].filter(Boolean).join(", ") || "seca"}`;
             return (
@@ -98,6 +101,7 @@ function Logs() {
           })}
         </ul>
       </Section>
+      )}
     </AppShell>
   );
 }
