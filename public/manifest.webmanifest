@@ -1,0 +1,36 @@
+{
+  "id": "/",
+  "name": "Bebê Saudável",
+  "short_name": "Bebê Saudável",
+  "description": "Apoio às mães e cuidados com o bebé, dos primeiros dias aos 24 meses.",
+  "lang": "pt",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "portrait",
+  "background_color": "#fff8f6",
+  "theme_color": "#f6e7e4",
+  "categories": [
+    "health",
+    "lifestyle",
+    "parenting"
+  ],
+  "icons": [
+    {
+      "src": "/pwa-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
