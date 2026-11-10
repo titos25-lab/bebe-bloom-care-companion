@@ -14,6 +14,10 @@ export const Route = createFileRoute("/_authenticated/admin")({
   component: AdminDashboard,
 });
 
+const STATUS_LABELS: Record<string, string> = {
+  pending: "Pendente", active: "Activo", rejected: "Rejeitado", cancelled: "Cancelado", expired: "Expirado",
+};
+
 type Subscription = {
   id: string; user_id: string; plan: string; amount_mt: number;
   status: string; payment_ref: string | null; created_at: string;
@@ -97,7 +101,7 @@ function AdminDashboard() {
           return <Card key={row.id}>
             <div className="flex items-start justify-between gap-2">
               <div><p className="font-semibold">{profileById.get(row.user_id) || "Cliente BabyCare"}</p><p className="break-all text-xs text-muted-foreground">ID: {row.user_id}</p></div>
-              <span className={`rounded-full px-2 py-1 text-xs ${pending ? "bg-amber-100 text-amber-800" : row.status === "active" ? "bg-green-100 text-green-800" : "bg-muted text-muted-foreground"}`}>{row.status === "pending" ? "Pendente" : row.status === "active" ? "Activo" : row.status}</span>
+              <span className={`rounded-full px-2 py-1 text-xs ${pending ? "bg-amber-100 text-amber-800" : row.status === "active" ? "bg-green-100 text-green-800" : "bg-muted text-muted-foreground"}`}>{STATUS_LABELS[row.status] ?? row.status}</span>
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
               <div><p className="text-muted-foreground">Plano</p><p className="font-medium">{plan?.name ?? row.plan}</p></div>

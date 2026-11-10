@@ -15,6 +15,13 @@
       "when": 1794232619636,
       "tag": "0001_premium_article_gate",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794298061928,
+      "tag": "0002_allow_rejected_subscription_status",
+      "breakpoints": true
     }
   ]
 }
