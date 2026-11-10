@@ -10,10 +10,10 @@ import { Label } from "@/components/ui/label";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Entrar — BabyCare" },
-      { name: "description", content: "Entre ou crie a sua conta BabyCare." },
-      { property: "og:title", content: "Entrar — BabyCare" },
-      { property: "og:description", content: "Entre ou crie a sua conta BabyCare." },
+      { title: "Entrar — Bebê Saudável" },
+      { name: "description", content: "Entre ou crie a sua conta Bebê Saudável." },
+      { property: "og:title", content: "Entrar — Bebê Saudável" },
+      { property: "og:description", content: "Entre ou crie a sua conta Bebê Saudável." },
     ],
   }),
   component: AuthPage,
@@ -67,7 +67,7 @@ function AuthPage() {
 
   return (
     <div className="mx-auto flex min-h-screen max-w-md flex-col bg-gradient-soft px-6 py-8">
-      <Link to="/" className="font-display text-2xl text-primary">BabyCare</Link>
+      <Link to="/" className="font-display text-2xl text-primary">Bebê Saudável</Link>
       <h1 className="mt-8 text-3xl">{mode === "up" ? "Criar conta" : mode === "forgot" ? "Recuperar palavra-passe" : "Bem-vinda de volta"}</h1>
       <div className="mt-6 rounded-3xl bg-card p-5 shadow-soft">
         {mode !== "forgot" && (
