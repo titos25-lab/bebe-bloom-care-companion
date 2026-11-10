@@ -1,7 +1,7 @@
 import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { Milk, Moon, Baby, Syringe, Stethoscope, Sparkles, Siren, Lock, RefreshCw } from "lucide-react";
+import { Milk, Moon, Baby, Syringe, Stethoscope, Sparkles, Siren, Lock, RefreshCw, BookHeart } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { AppShell, Card, Section } from "@/components/AppShell";
 import { useBaby, useProfile, useIsPremium } from "@/lib/session";
@@ -71,6 +71,12 @@ function Home() {
           </button>
         </Card>
       </Section>
+
+      <Link to="/diario" className="mt-5 flex items-center gap-3 rounded-2xl border border-primary/20 bg-card p-4 shadow-soft">
+        <div className="rounded-xl bg-accent p-3 text-primary"><BookHeart className="size-6" /></div>
+        <div className="min-w-0 flex-1"><p className="font-semibold">Diário do Meu Bebé</p><p className="text-xs text-muted-foreground">Acompanhe memórias, rotina e crescimento num só lugar.</p></div>
+        <span className="text-sm font-bold text-primary">Abrir</span>
+      </Link>
 
       <Section title="Últimas 24 horas" action={<Link to="/registos" className="text-sm text-primary">Registar</Link>}>
         <div className="grid grid-cols-3 gap-2">
