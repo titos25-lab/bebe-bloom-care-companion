@@ -23,9 +23,9 @@ function Emergency() {
       <button onClick={() => history.back()} className="flex items-center gap-1 text-sm text-muted-foreground"><ArrowLeft className="size-4" /> Voltar</button>
       <div className="mt-4 flex items-center gap-2 text-destructive">
         <Siren className="size-7" />
-        <h1 className="text-2xl">Quando levar o bebé ao hospital?</h1>
+        <div><h1 className="text-2xl">Quando levar o bebé ao hospital?</h1><span className="mt-1 inline-flex rounded-full bg-card px-3 py-1 text-xs font-bold text-emerald-700">ACESSO GRATUITO — NÃO PRECISA DE PREMIUM</span></div>
       </div>
-      <p className="mt-2 text-sm">Toque num sinal se o observar no seu bebé. Esta informação é gratuita e não substitui um profissional de saúde.</p>
+      <p className="mt-2 text-sm">Toque num sinal se o observar no seu bebé. Esta informação de segurança está disponível gratuitamente para todas as mães, sem assinatura Premium. Não substitui a avaliação de um profissional de saúde.</p>
 
       {sign && (
         <div role="alert" className="mt-4 rounded-2xl bg-destructive p-5 text-destructive-foreground shadow-soft">
