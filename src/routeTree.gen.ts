@@ -137,6 +137,7 @@ export interface FileRoutesByTo {
   '/emergencia': typeof EmergenciaRoute
   '/privacidade': typeof PrivacidadeRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/assistente': typeof AuthenticatedAssistenteRoute
   '/calendario': typeof AuthenticatedCalendarioRoute
   '/comunidade': typeof AuthenticatedComunidadeRoute
