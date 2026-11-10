@@ -74,7 +74,7 @@ function Home() {
 
       <Section title="Últimas 24 horas" action={<Link to="/registos" className="text-sm text-primary">Registar</Link>}>
         <div className="grid grid-cols-3 gap-2">
-          <Stat icon={Milk} label="Mamadas" value={feeds.length} />
+          {premium ? <Stat icon={Milk} label="Mamadas" value={feeds.length} /> : <Link to="/planos" className="flex flex-col items-center justify-center rounded-2xl border border-primary/20 bg-card p-3 text-center"><Lock className="size-5 text-primary" /><p className="mt-1 text-sm font-semibold">Mamadas</p><p className="text-[11px] text-primary">Premium</p></Link>}
           <Stat icon={Moon} label="Sono" value={`${Math.floor(sleepMin / 60)}h${String(Math.round(sleepMin % 60)).padStart(2, "0")}`} />
           <Stat icon={Baby} label="Fraldas" value={diapers.length} />
         </div>
