@@ -34,6 +34,8 @@ function Home() {
   const age = babyAge(baby.birth_date);
   const ms = milestonesFor(age.months);
   const tip = tipOfDay(new Date(), age.months, tipOffset);
+  const hour = new Date().getHours();
+  const greeting = hour >= 5 && hour < 12 ? "Bom dia, Mamãe" : hour >= 12 && hour < 18 ? "Boa tarde, Mamãe" : "Boa noite, Mamãe";
   const l = logs.data ?? [];
   const feeds = l.filter((x) => x.kind === "feed");
   const diapers = l.filter((x) => x.kind === "diaper");
@@ -43,13 +45,43 @@ function Home() {
   return (
     <AppShell>
       <div className="mt-2 rounded-3xl bg-gradient-soft p-5 shadow-soft">
-        <p className="text-sm text-muted-foreground">Olá, {profile?.mother_name?.split(" ")[0] ?? "mamã"} 💗</p>
+        <p className="text-sm text-muted-foreground">{greeting}, {profile?.mother_name?.split(" ")[0] ?? "mamã"} 💗</p>
         <h1 className="mt-1 text-3xl">{baby.name}</h1>
         <div className="mt-3 flex gap-3">
           <div className="rounded-2xl bg-card/80 px-4 py-2"><p className="text-xs text-muted-foreground">Idade</p><p className="font-display text-xl">{ageLabel(baby.birth_date)}</p></div>
           <div className="rounded-2xl bg-card/80 px-4 py-2"><p className="text-xs text-muted-foreground">Dias de vida</p><p className="font-display text-xl">{age.days}</p></div>
         </div>
       </div>
+
+      <section aria-label="Famílias BabyCare" className="mt-4">
+        <div className="mb-2 flex items-center justify-between">
+          <h2 className="text-lg">Cada família é única 💗</h2>
+          <span className="text-xs text-muted-foreground">BabyCare</span>
+        </div>
+        <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
+          {[
+            { image: "https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?auto=format&fit=crop&w=900&q=85", title: "Amor que acolhe", subtitle: "Mães e bebés de todas as cores e histórias." },
+            { image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=85", title: "Crescemos juntos", subtitle: "Cada etapa merece ser celebrada." },
+            { image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=85", title: "Uma comunidade para si", subtitle: "Partilhe a jornada com outras mães." },
+          ].map((slide) => (
+            <article key={slide.title} className="relative h-44 min-w-[85%] snap-center overflow-hidden rounded-3xl bg-muted">
+              <img src={slide.image} alt={slide.title} loading="lazy" className="h-full w-full object-cover" onError={(e) => { e.currentTarget.src = "/favicon.ico"; }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                <h3 className="text-xl font-semibold">{slide.title}</h3>
+                <p className="mt-1 text-xs text-white/90">{slide.subtitle}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="mt-1 text-center text-[10px] text-muted-foreground">Deslize para ver mais</p>
+      </section>
+
+      <Link to="/comunidade" className="mt-4 flex items-center gap-3 rounded-2xl border border-primary/20 bg-card p-4 shadow-soft">
+        <div className="rounded-xl bg-accent p-3 text-primary"><Baby className="size-6" /></div>
+        <div className="min-w-0 flex-1"><p className="font-semibold">Encontre mães na mesma fase</p><p className="text-xs text-muted-foreground">Partilhe experiências com mães cujos bebés têm idade semelhante.</p></div>
+        <span className="text-sm font-bold text-primary">Entrar</span>
+      </Link>
 
       <Link to="/emergencia" className="mt-4 flex items-center gap-3 rounded-2xl bg-emergency-soft p-4 text-destructive">
         <Siren className="size-6" /><div><p className="font-bold">Alerta médico</p><p className="text-xs">Sinais para ir ao hospital — sempre gratuito</p></div>
