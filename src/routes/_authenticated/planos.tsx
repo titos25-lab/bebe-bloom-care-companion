@@ -15,6 +15,7 @@ export const Route = createFileRoute("/_authenticated/planos")({
 });
 
 const EMOLA_NUMBER = "875414048";
+type Wallet = "emola" | "mpesa";
 
 function Plans() {
   const qc = useQueryClient();
@@ -22,6 +23,7 @@ function Plans() {
   const [selected, setSelected] = useState<PlanId | null>(null);
   const [requestId, setRequestId] = useState<string | null>(null);
   const [reference, setReference] = useState("");
+  const [wallet, setWallet] = useState<Wallet | null>(null);
   const [busy, setBusy] = useState(false);
 
   async function choose(id: PlanId) {
@@ -36,7 +38,8 @@ function Plans() {
     setSelected(id);
     setRequestId(data.id);
     setReference("");
-    toast.success("Pedido criado. Faça a transferência e guarde o comprovativo.");
+    setWallet(null);
+    toast.success("Pedido criado. Escolha a carteira e conclua o pagamento.");
   }
 
   async function saveReference() {
@@ -57,10 +60,18 @@ function Plans() {
   async function copyNumber() {
     try {
       await navigator.clipboard.writeText(EMOLA_NUMBER);
-      toast.success("Número de pagamento copiado.");
+      toast.success("Número de e-Mola copiado.");
     } catch {
-      toast.info("Número de pagamento: " + EMOLA_NUMBER);
+      toast.info("Número de e-Mola: " + EMOLA_NUMBER);
     }
+  }
+
+  function payNow() {
+    if (!wallet) {
+      toast.error("Seleccione e-Mola ou M-Pesa para continuar.");
+      return;
+    }
+    window.location.href = wallet === "emola" ? "tel:*898%23" : "tel:*150%23";
   }
 
   const chosenPlan = selected ? planById(selected) : null;
@@ -86,29 +97,20 @@ function Plans() {
             <div className="flex items-center gap-2"><Smartphone className="size-5 text-primary" /><h2 className="font-semibold">Pagamento móvel</h2></div>
             <p className="mt-3 text-sm">Plano seleccionado: <b>{chosenPlan.name}</b></p>
             <p className="text-2xl font-bold text-primary">{chosenPlan.price} MT</p>
-            <p className="mt-3 text-sm">Escolha a carteira móvel para abrir o menu de pagamento no seu telemóvel:</p>
+            <p className="mt-3 text-sm">1. Escolha a carteira móvel que pretende utilizar:</p>
             <div className="mt-3 grid grid-cols-2 gap-2">
-              <Button asChild className="w-full rounded-full">
-                <a href="tel:*898%23">Pagar com e-Mola</a>
-              </Button>
-              <Button asChild variant="outline" className="w-full rounded-full">
-                <a href="tel:*150%23">Pagar com M-Pesa</a>
-              </Button>
+              <Button type="button" aria-pressed={wallet === "emola"} variant={wallet === "emola" ? "default" : "outline"} className="w-full rounded-full" onClick={() => setWallet("emola")}>e-Mola</Button>
+              <Button type="button" aria-pressed={wallet === "mpesa"} variant={wallet === "mpesa" ? "default" : "outline"} className="w-full rounded-full" onClick={() => setWallet("mpesa")}>M-Pesa</Button>
             </div>
-            <p className="mt-3 text-sm">Número de destino: <b>{EMOLA_NUMBER}</b></p>
+            <Button type="button" className="mt-3 w-full rounded-full" disabled={!wallet} onClick={payNow}>PAGAR AGORA</Button>
+            <p className="mt-3 text-sm">2. Depois de abrir o menu USSD, siga as instruções da carteira e confirme cuidadosamente o destinatário e o valor de {chosenPlan.price} MT.</p>
+            <p className="mt-3 text-sm">Número de destino e-Mola: <b>{EMOLA_NUMBER}</b></p>
             <p className="mt-1 text-sm">Titular da conta: <b>T**os j**e C**sa</b></p>
             <div className="mt-2 flex items-center justify-between rounded-xl bg-card p-3">
               <span className="text-xl font-bold tracking-wider">{EMOLA_NUMBER}</span>
               <Button type="button" variant="outline" size="sm" onClick={copyNumber}><Copy className="mr-1 size-4" />Copiar</Button>
             </div>
-            <p className="mt-3 text-sm">Depois de abrir o menu da carteira escolhida:</p>
-            <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm">
-              <li>Seleccione a opção de transferência.</li>
-              <li>Introduza o número de destino e o valor exacto de {chosenPlan.price} MT.</li>
-              <li>Confirme os dados e conclua a operação no telemóvel.</li>
-              <li>Guarde o comprovativo e registe a referência da transacção abaixo.</li>
-            </ol>
-            <p className="mt-2 text-xs text-muted-foreground">O botão abre o código USSD da carteira escolhida. A transferência deve ser confirmada por si no menu do operador. Confirme que o número de destino corresponde à carteira seleccionada antes de concluir.</p>
+            <p className="mt-2 text-xs text-muted-foreground">O botão abre o menu USSD da carteira seleccionada. A abertura depende do suporte do telemóvel e do operador. O número acima é o destinatário e-Mola; para M-Pesa, confirme o número de destino correcto antes de transferir.</p>
             <label className="mt-4 block text-sm font-medium" htmlFor="payment-reference">Referência da transacção</label>
             <input id="payment-reference" value={reference} onChange={(e) => setReference(e.target.value)} placeholder="Introduza a referência da transacção" className="mt-1 h-11 w-full rounded-xl border border-input bg-background px-3 text-sm" />
             <Button className="mt-3 w-full rounded-full" onClick={saveReference} disabled={busy || !reference.trim()}>{busy ? "A guardar…" : "Registar referência"}</Button>
