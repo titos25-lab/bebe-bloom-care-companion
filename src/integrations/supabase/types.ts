@@ -124,6 +124,7 @@ export type Database = {
       community_posts: {
         Row: {
           author_name: string
+          baby_age_months: number | null
           content: string
           created_at: string
           hidden: boolean
@@ -133,6 +134,7 @@ export type Database = {
         }
         Insert: {
           author_name?: string
+          baby_age_months?: number | null
           content: string
           created_at?: string
           hidden?: boolean
@@ -142,6 +144,7 @@ export type Database = {
         }
         Update: {
           author_name?: string
+          baby_age_months?: number | null
           content?: string
           created_at?: string
           hidden?: boolean
