@@ -29,27 +29,28 @@ export function milestonesFor(months: number) {
   return MILESTONES.find((m) => months < m.upTo) ?? MILESTONES[MILESTONES.length - 1];
 }
 
-const TIPS = [
-  "Faça contacto pele a pele hoje — acalma o bebé e ajuda a produção de leite.",
-  "Deite o bebé sempre de barriga para cima para dormir.",
-  "Converse e cante para o bebé: a sua voz estimula a linguagem.",
-  "Beba água sempre que amamentar.",
-  "Momentos de barriga para baixo (acordado e vigiado) fortalecem o pescoço.",
-  "Descanse quando o bebé dorme. Cuidar de si é cuidar dele.",
-  "Lave as mãos antes de pegar no bebé e de preparar refeições.",
-  "Leia uma história curta — nunca é cedo demais.",
+const DAILY_TIPS = [
+  { title: "Amamentação", text: "Procure uma posição confortável e deixe o bebé terminar a primeira mama antes de oferecer a outra.", action: "Hoje, observe se o bebé pega não só no mamilo, mas também em boa parte da aréola." },
+  { title: "Sono seguro", text: "Coloque o bebé de barriga para cima em todas as sestas e durante a noite, numa superfície firme e plana.", action: "Retire almofadas, brinquedos soltos e cobertores fofos do espaço de sono." },
+  { title: "Vínculo", text: "O contacto pele a pele, quando ambos estão acordados e em segurança, ajuda a fortalecer o vínculo.", action: "Reserve alguns minutos para conversar suavemente e olhar para o seu bebé." },
+  { title: "Cólicas e conforto", text: "Depois da mamada, experimente manter o bebé junto ao peito, na vertical, e ajudá-lo a arrotar sem pressionar a barriga.", action: "Faça pausas suaves durante a mamada se o bebé parecer desconfortável." },
+  { title: "Desenvolvimento", text: "Falar, cantar e responder aos sons do bebé são formas simples de estimular a comunicação desde cedo.", action: "Descreva em voz alta uma actividade que estejam a fazer juntos." },
+  { title: "Bem-estar da mãe", text: "A recuperação também importa. Aceite ajuda nas tarefas e procure descansar sempre que possível.", action: "Peça hoje a alguém de confiança para ajudar com uma tarefa concreta." },
+  { title: "Fraldas", text: "Acompanhar as fraldas molhadas ajuda a perceber se o bebé está a receber leite suficiente, sobretudo nos primeiros dias.", action: "Registe as mamadas e fraldas para conversar com o profissional de saúde se notar alterações." },
+  { title: "Alimentação", text: "Por volta dos 6 meses, quando o bebé demonstra sinais de prontidão, converse com o profissional de saúde sobre iniciar a alimentação complementar.", action: "Nunca ofereça alimentos sólidos antes de o bebé estar preparado e receber orientação adequada." },
 ];
-export function tipOfDay(date = new Date()) {
-  const n = Math.floor(date.getTime() / 86400000);
-  return TIPS[n % TIPS.length]!;
+export function tipOfDay(date = new Date(), months = 0, offset = 0) {
+  const dayNumber = Math.floor(new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime() / 86400000);
+  const ageOffset = Math.min(7, Math.floor(Math.max(0, months) / 3));
+  return DAILY_TIPS[((dayNumber + ageOffset + offset) % DAILY_TIPS.length + DAILY_TIPS.length) % DAILY_TIPS.length]!;
 }
 
 export function dailyGuidance(months: number) {
   if (months < 1) return ["Amamente em livre demanda", "Limpe o coto umbilical e mantenha-o seco", "Conte as fraldas molhadas (6+ a partir do 5.º dia)"];
-  if (months < 4) return ["Ofereça tempo de barriga para baixo 3–5 minutos, várias vezes", "Observe os sinais de sono e evite cansaço excessivo", "Sorria e converse olhos nos olhos"];
-  if (months < 6) return ["Brinque com chocalhos e objectos coloridos", "Mantenha a amamentação exclusiva até aos 6 meses", "Comece um ritual de sono nocturno"];
-  if (months < 12) return ["Ofereça novos alimentos um de cada vez", "Proteja tomadas e escadas — o bebé vai mexer-se!", "Nomeie objectos e partes do corpo"];
-  return ["Ofereça refeições em família, sem sal nem açúcar", "Leia e cante todos os dias", "Incentive-o a explorar com segurança ao ar livre"];
+  if (months < 4) return ["Ofereça tempo de barriga para baixo 3–5 minutos, várias vezes, sempre acordado e supervisionado", "Observe os sinais de sono e evite cansaço excessivo", "Sorria e converse olhos nos olhos"];
+  if (months < 6) return ["Brinque com chocalhos e objectos coloridos seguros", "Mantenha a amamentação exclusiva até aos 6 meses, salvo orientação clínica", "Comece um ritual de sono nocturno"];
+  if (months < 12) return ["Ofereça novos alimentos adequados à idade e com orientação profissional", "Proteja tomadas e escadas — o bebé vai mexer-se!", "Nomeie objectos e partes do corpo"];
+  return ["Ofereça refeições variadas, evitando excesso de sal e açúcar", "Leia e cante todos os dias", "Incentive-o a explorar com segurança"];
 }
 
 // Calendário de vacinação de referência (PAV Moçambique). Confirme sempre com a unidade sanitária.
