@@ -87,6 +87,7 @@ function Plans() {
             <p className="mt-3 text-sm">Plano seleccionado: <b>{chosenPlan.name}</b></p>
             <p className="text-2xl font-bold text-primary">{chosenPlan.price} MT</p>
             <p className="mt-3 text-sm">Faça uma transferência e-Mola para o seguinte número:</p>
+            <p className="mt-2 text-sm">Titular da conta: <b>T**os j**e C**sa</b></p>
             <div className="mt-2 flex items-center justify-between rounded-xl bg-card p-3">
               <span className="text-xl font-bold tracking-wider">{EMOLA_NUMBER}</span>
               <Button type="button" variant="outline" size="sm" onClick={copyNumber}><Copy className="mr-1 size-4" />Copiar</Button>
